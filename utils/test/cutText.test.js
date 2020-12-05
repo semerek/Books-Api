@@ -1,8 +1,6 @@
 const cutText = require('../cutText.js');
 const expect = require('chai').expect;
 
-
-
 describe('CutText', () => {
     it('should return an error if "content" arg is not a string', () => {
         if(typeof content !== 'string') return 'Error';
@@ -25,6 +23,10 @@ describe('CutText', () => {
         expect(cutText('Lorem Ipsum', function() {})).to.equal('Error');
       })
 
+      it('should return an error if "content" arg length is 0', () => {
+        expect(cutText('', 20)).to.equal('Error');
+      });
+
       it('should return an error if "maxLength" is lower or equal 0', () => {
         expect(cutText('Lorem Ipsum', 0)).to.equal('Error');
         expect(cutText('Lorem Ipsum', -6)).to.equal('Error');
@@ -42,3 +44,4 @@ describe('CutText', () => {
       });
    
   });
+
